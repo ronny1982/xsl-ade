@@ -1,0 +1,9 @@
+{
+  "name": "xsl-doc-extractor",
+  "scripts": {
+    "start": "serve htdocs"
+  },
+  "devDependencies": {
+    "serve": "latest"
+  }
+}
