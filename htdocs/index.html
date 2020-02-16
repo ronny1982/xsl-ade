@@ -3,12 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>HAMILTON | XSL Document Extractor</title>
-        <script src="./js/react.production.min.js"></script> <!-- <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script> -->
-        <script src="./js/react-dom.production.min.js"></script> <!-- <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> -->
-        <script src="./js/material-ui.development.js"></script> <!-- <script src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js"></script> -->
+
+        <!--
+        <script src="https://unpkg.com/jszip@latest/dist/jszip.min.js"></script>
+        <script src="https://unpkg.com/react@latest/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@latest/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js"></script>
+        -->
+        <script src="./js/jszip.min.js"></script>
+        <script src="./js/react.production.min.js"></script>
+        <script src="./js/react-dom.production.min.js"></script>
+        <script src="./js/material-ui.production.min.js"></script>
+
         <script type="module">
             import App from './mjs/App.mjs';
-            
             // Mount react application when DOM is ready
             window.addEventListener('DOMContentLoaded', event => {
                 ReactDOM.render(
@@ -17,6 +25,7 @@
                 );
             });
         </script>
+
         <style>
             html, body {
                 width: 100%;
@@ -48,15 +57,27 @@
 
             #archiveviewer {
                 flex: 1;
-                border: 1px dotted red;
+                display: flex;
+                flex-direction: column;
+            }
+
+            #archiveupload {
+                flex: 0;
+                display: block;
+                margin: 0.5em;
+            }
+
+            #archiveselection {
+                flex: 1;
+                display: block;
+                margin: 0.5em;
             }
 
             #documentinfo {
                 flex: 1;
-                border: 1px dotted blue;
             }
 
-            #downloadbutton {
+            #downloadfile {
                 flex: 0;
                 margin: 0.5em;
                 padding: 0.5em;

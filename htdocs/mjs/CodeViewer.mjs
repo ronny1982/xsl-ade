@@ -1,6 +1,6 @@
 export default function CodeViewer(props) {
     return React.createElement('iframe', {
         id: 'codeviewer',
-        src: 'https://google.com'
+        src: URL.createObjectURL(new Blob([props.content], { type: 'application/xml' }))
     }, null);
 }
