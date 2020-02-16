@@ -5,7 +5,7 @@ function getProperties(file) {
 }
 
 export default function DocumentInfo(props) {
-    return React.createElement('div', {
+    return React.createElement('pre', {
         id: 'documentinfo'
     }, props.content);
 }

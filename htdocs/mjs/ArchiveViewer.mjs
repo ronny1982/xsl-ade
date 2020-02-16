@@ -41,8 +41,8 @@ export default function ArchiveViewer(props) {
             }
             json = JSON.stringify(json, null, 2);
         }
-        setSelectedJSON(undefined);
-        setSelectedXML(undefined);
+        setSelectedJSON(json);
+        setSelectedXML(xml);
         props.onChange({
             json: json,
             xml: xml
@@ -52,7 +52,7 @@ export default function ArchiveViewer(props) {
     async function download() {
         if(selectedXML) {
             let a = document.createElement('a');
-            a.href = URL.createObjectURL(selectedXML);
+            a.href = URL.createObjectURL(new Blob([selectedXML], { type: mimes.xml }));
             a.download = 'content.xml';
             a.click();
             // TODO: free object URL after download complete ...
