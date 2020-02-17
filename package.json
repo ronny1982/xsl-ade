@@ -1,5 +1,5 @@
 {
-  "name": "xsl-doc-extractor",
+  "name": "xsl-ade",
   "scripts": {
     "start": "serve htdocs"
   },
