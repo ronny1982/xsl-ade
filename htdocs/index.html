@@ -82,13 +82,17 @@
 
             #documentinfo {
                 flex: 1;
-                overflow: scroll;
+                overflow-x: auto !important;
+                overflow-y: auto !important;
                 margin: 0.5em;
+                background: white;
                 border: 1px solid grey;
             }
 
-            #documentinfo code {
-                overflow: visible;
+            .hljs {
+                background: transparent !important;
+                overflow-x: visible !important;
+                overflow-y: visible !important;
             }
 
             #downloadfile {
