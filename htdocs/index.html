@@ -19,88 +19,13 @@
         <link rel="stylesheet" href="https://unpkg.com/monaco-editor@0.20.0/min/vs/editor/editor.main.css">
         -->
 
+        <link rel="stylesheet" href="./css/style.css">
         <script type="module">
             import App from './mjs/App.mjs';
             window.addEventListener('DOMContentLoaded', event => {
                 ReactDOM.render(React.createElement(App, null, null), document.getElementById('hook'));
             });
         </script>
-
-        <style>
-            html, body, #hook {
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
-            }
-
-            #app {
-                display: flex;
-                flex-direction: row;
-                width: 100%;
-                height: 100%;
-            }
-
-            #documentpanel {
-                flex: 0;
-                min-width: 20%;
-                max-width: 20%;
-                display: flex;
-                flex-direction: column;
-                border: 1px solid black;
-                background-color: lightgray;
-            }
-
-            #codeviewer {
-                flex: 1;
-                margin: 0;
-                padding: 0.5em;
-                border: none;
-                overflow: hidden;
-            }
-
-            #archiveviewer {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-            }
-
-            #archiveupload {
-                /*flex: 0;*/
-                margin: 0.5em;
-                /*background: white;*/
-                /*border: 1px dotted grey;*/
-            }
-
-            #archiveselection {
-                flex: 1;
-                display: block;
-                margin: 0.5em;
-                background: white;
-                border: 1px solid grey;
-            }
-
-            #documentinfo {
-                flex: 1;
-                overflow-x: auto !important;
-                overflow-y: auto !important;
-                margin: 0.5em;
-                background: white;
-                border: 1px solid grey;
-            }
-
-            .hljs {
-                background: transparent !important;
-                overflow-x: visible !important;
-                overflow-y: visible !important;
-            }
-
-            #downloadfile {
-                /*flex: 0;*/
-                margin: 0.5em;
-                padding: 0.5em;
-            }
-        </style>
     </head>
     <body>
         <script>
