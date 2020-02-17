@@ -9,8 +9,7 @@ const mimes = {
 export default function ArchiveViewer(props) {
 
     const [archiveEntries, setArchiveEntries] = React.useState([]);
-    const [selectedJSON, setSelectedJSON] = React.useState(undefined);
-    const [selectedXML, setSelectedXML] = React.useState(undefined);
+    const [selectedFile, setSelectedFile] = React.useState(undefined);
 
     async function loadArchive(evt) {
         let entries = [];
@@ -31,28 +30,23 @@ export default function ArchiveViewer(props) {
         if(!data.type) {
             data = data.slice(0, data.size, mimes[name.split('.').pop()] || mimes['']);
         }
-        let json = undefined;
-        let xml = undefined;
+        let file = {};
         if(data && data.type && data.type.toLowerCase().includes('json')) {
-            json = JSON.parse(await data.text());
+            let json = JSON.parse(await data.text());
             if(json.Content && json.Content.Data) {
-                xml = json.Content.Data;
+                file.xml = json.Content.Data;
                 json.Content.Data = '…';
             }
-            json = JSON.stringify(json, null, 2);
+            file.json = JSON.stringify(json, null, 2);
         }
-        setSelectedJSON(json);
-        setSelectedXML(xml);
-        props.onChange({
-            json: json,
-            xml: xml
-        });
+        setSelectedFile(file);
+        props.onChange(file);
     }
 
     async function download() {
-        if(selectedXML) {
+        if(selectedFile && selectedFile.xml) {
             let a = document.createElement('a');
-            a.href = URL.createObjectURL(new Blob([selectedXML], { type: mimes.xml }));
+            a.href = URL.createObjectURL(new Blob([selectedFile.xml], { type: mimes.xml }));
             a.download = 'content.xml';
             a.click();
             // TODO: free object URL after download complete ...
@@ -73,6 +67,8 @@ export default function ArchiveViewer(props) {
     }, React.createElement('input', {
         id: 'archiveupload',
         type: 'file',
+        accept: '.hamXslAssay, .hamXslSystem',
+        title: 'Open HAMILTON XRP2 XSL Document Archive',
         onChange: loadArchive
     }, null), React.createElement('select', {
         id: 'archiveselection',
@@ -83,5 +79,5 @@ export default function ArchiveViewer(props) {
         title: 'Download the XML content of the currently selected file',
         disabled: false,
         onClick: () => download()
-    }, 'Download...'));
+    }, 'Download…'));
 }
