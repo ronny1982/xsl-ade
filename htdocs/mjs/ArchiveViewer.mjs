@@ -58,10 +58,10 @@ export default function ArchiveViewer(props) {
     function getOptions(entries, file) {
         return entries.map(entry => React.createElement('option', {
             selected: entry === file,
-            disabled: !entry.endsWith('.json'),
+            disabled: !entry.name.endsWith('.json'),
             value: entry.name,
             style: {
-                color: entry.endsWith('.json') ? 'inherit' : 'lightpink'
+                color: entry.name.endsWith('.json') ? 'inherit' : 'lightpink'
             }
         }, entry.name));
     }
